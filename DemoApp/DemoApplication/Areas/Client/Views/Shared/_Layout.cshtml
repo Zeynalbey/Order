@@ -108,8 +108,11 @@
                                             <a asp-route="client-auth-register">Register</a>
                                         }
                                     </div>
-                                    <div class="cart-block">
-                                        @await Component.InvokeAsync(nameof(ShopCart));
+                                    <div class="cart-block" >
+                                        <a asp-route="shopping-list">
+                                            @await Component.InvokeAsync(nameof(ShopCart));
+                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -39,10 +39,6 @@ namespace DemoApplication.Services.Concretes
 
             return AddToCookie();
 
-
-
-
-
             //Add product to database if user is authenticated
             async Task AddToDatabaseAsync()
             {

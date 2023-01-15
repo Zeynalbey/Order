@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Security.Claims;
 
-namespace DemoApplication.Controllers
+namespace DemoApplication.Areas.Client.Controllers
 {
     [Area("client")]
     [Route("auth")]
@@ -47,13 +47,13 @@ namespace DemoApplication.Controllers
 
             if (!await _userService.CheckPasswordAsync(model!.Email, model!.Password))
             {
-                ModelState.AddModelError(String.Empty, "Email or password is not correct");
+                ModelState.AddModelError(string.Empty, "Email or password is not correct");
                 return View(model);
             }
 
             if (!await _userService.CheckEmailConfirmedAsync(model!.Email))
             {
-                ModelState.AddModelError(String.Empty, "Email is not confirmed");
+                ModelState.AddModelError(string.Empty, "Email is not confirmed");
                 return View(model);
             }
 
@@ -99,7 +99,7 @@ namespace DemoApplication.Controllers
             var userActivation = await _dbContext.UserActivations
                 .Include(ua => ua.User)
                 .FirstOrDefaultAsync(ua =>
-                    !ua!.User!.IsEmailConfirmed && 
+                    !ua!.User!.IsEmailConfirmed &&
                     ua.ActivationToken == token);
 
             if (userActivation is null)

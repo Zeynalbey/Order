@@ -1,0 +1,70 @@
+﻿@using DemoApplication.Areas.Client.ViewModels.Basket;
+@model List<ProductCookieViewModel>
+
+<div class="cart_area inner-page-sec-padding-bottom mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="https://demo.hasthemes.com/pustok-preview/pustok/">
+                    <!-- Cart Table -->
+                    <div class="cart-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="pro-thumbnail">Image</th>
+                                    <th class="pro-title">Product</th>
+                                    <th class="pro-price">Price</th>
+                                    <th class="pro-quantity">Quantity</th>
+                                    <th class="pro-subtotal">Total</th>
+                                    <th class="pro-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+@*                                @foreach (var book in Model.ShoppingList)
+                                {
+                                    <tr>
+                                        <td class="pro-thumbnail">
+                                            <a href="#">
+                                                <img src="@book.ImageUrl alt="Product">
+                                            </a>
+                                        </td>
+                                        <td class="pro-title">@book.Title</td>
+                                        <td class="pro-price"><span>@book.Price</span></td>
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty">
+                                                <div class="count-input-block">
+                                                    <input type="number" class="form-control text-center" value="@book.Quantity">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="pro-subtotal"><span>@book.Total</span></td>
+                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                }*@
+                                @foreach (var productCookieViewModel in Model)
+                                {
+                                    <div class="cart-product">
+                                        <a href="product-details.html" class="image">
+                                            <img src="~/client/assets/image/products/cart-product-1.jpg" alt="">
+                                        </a>
+                                        <div class="content">
+                                            <h3 class="title">
+                                                <a href="product-details.html">
+                                                    @productCookieViewModel.Title
+                                                </a>
+                                            </h3>
+                                            <p class="price"><span class="qty">@productCookieViewModel.Quantity ×</span> £@productCookieViewModel.Price</p>
+                                            <a data-id="@productCookieViewModel.Id" class="cross-btn remove-product-to-basket-btn"><i class="fas fa-times"></i></a>
+                                        </div>
+                                    </div>
+                                }
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart Page End -->
